@@ -1,0 +1,31 @@
+ - domowy budżet;
+    - logowanie
+    - rejestracja (mail)
+    - różne role (user/admin)
+    - kategorie wydatków (crud)
+    - definiowanie limitów (dzienny miesięczny)
+    - wprodzanie dochódów
+    - ładny interfejs
+    - możliwość definiowania celów oszczędnościowych
+    - możliwość definiowania powiadomień;
+    - listy zakupów - realtime - kilka osób widzi/odznacza;
+    - powiadomienia/raporty:
+        - dzienne wydatki;
+        - raport kiedy osiągniemy cel oszczędzania
+        - list gratulacyjny - cel osiągnięty
+        - wykresiki - dane z podziałem na: kategorie/jednostki czasu/saldo
+        - podział wydatków per osoba;
+    - statystyki użycia aplikacji;
+   - powiadomienia (mailowe) o stałych wydatkach i możliwość ich potwierdzenia;
+    technologie:
+    - java 8;
+    - spring 5;
+    - hibernate 5;
+    - spring security;
+    - thymeleaf;
+    - css;
+    - biblioka do wykresów? (poczytać i wybrać)
+    - MySQL
+    - JUnit/Mojito
+    - gradle
+    - git

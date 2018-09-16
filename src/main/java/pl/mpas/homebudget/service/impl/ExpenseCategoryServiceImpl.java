@@ -28,12 +28,15 @@ public class ExpenseCategoryServiceImpl implements ExpenseCategoryService {
     @Override
     public List<ExpenseCategory> readAllExpenseCategories() {
 
-        // TODO:MP replace with dataRepository
-        List<ExpenseCategory> result = new ArrayList<>();
-        result.add(new ExpenseCategory(LocalDateTime.now(), "Słodycze", false));
-        result.add(new ExpenseCategory(LocalDateTime.now(), "Biedronka", false));
+        List<ExpenseCategory> result = (List<ExpenseCategory>) dataRepository.findAll();
 
         logger.info("Expense categories read from dao: {}", result);
         return result;
+    }
+
+    @Override
+    public boolean saveCategory(ExpenseCategory expenseCategory) {
+        ExpenseCategory savedCategory = dataRepository.save(expenseCategory);
+        return null != savedCategory.getId();
     }
 }

@@ -1,13 +1,17 @@
 package pl.mpas.homebudget.domain;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import java.time.LocalDateTime;
 
-@Entity
-@Table(name = "Income_Source")
+//@Entity
+//@Table(name = "Income_Source")
 public class IncomeSource {
 
+//    @Id
+//    @GeneratedValue
     private Long id;
 
     private String incomeName;
@@ -20,8 +24,7 @@ public class IncomeSource {
         // empty
     }
 
-    public IncomeSource(Long id, String incomeName, LocalDateTime creationDateTime, boolean deleted) {
-        this.id = id;
+    public IncomeSource(String incomeName, LocalDateTime creationDateTime, boolean deleted) {
         this.incomeName = incomeName;
         this.creationDateTime = creationDateTime;
         this.deleted = deleted;

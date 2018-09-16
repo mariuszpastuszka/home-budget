@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ExpenseCategoryServiceImpl implements ExpenseCategoryService {
@@ -38,5 +39,10 @@ public class ExpenseCategoryServiceImpl implements ExpenseCategoryService {
     public boolean saveCategory(ExpenseCategory expenseCategory) {
         ExpenseCategory savedCategory = dataRepository.save(expenseCategory);
         return null != savedCategory.getId();
+    }
+
+    @Override
+    public Optional<ExpenseCategory> findCategoryById(Long id) {
+        return dataRepository.findById(id);
     }
 }

@@ -5,15 +5,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import pl.mpas.homebudget.controller.ExpenseCategoryController;
 import pl.mpas.homebudget.domain.ExpenseCategory;
 import pl.mpas.homebudget.service.ExpenseCategoryService;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class ExpenseCategoryControllerImpl implements ExpenseCategoryController {
@@ -66,4 +64,16 @@ public class ExpenseCategoryControllerImpl implements ExpenseCategoryController 
         return "category/new-edit-category";
     }
 
+    @GetMapping("/category/edit/{id}")
+    public String editCategory(@PathVariable Long id, Model model) {
+        logger.info("editCategory(), id: {}", id);
+
+        model.addAttribute("operationTitle", "Edit");
+        model.addAttribute("mainParagraph", "Edit");
+
+        Optional<ExpenseCategory> foundCategory = categoryService.findCategoryById(id);
+        foundCategory.ifPresent(expenseCategory -> model.addAttribute("category", expenseCategory));
+
+        return "category/new-edit-category";
+    }
 }

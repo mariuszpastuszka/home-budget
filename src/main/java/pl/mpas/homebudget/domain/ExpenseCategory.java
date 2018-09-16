@@ -6,12 +6,12 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.time.LocalDateTime;
 
-//@Entity
-//@Table(name = "Expense_Category")
+@Entity
+@Table(name = "Expense_Category")
 public class ExpenseCategory {
 
-//    @Id
-//    @GeneratedValue
+    @Id
+    @GeneratedValue
     private Long id;
 
     private LocalDateTime creationDateTime;
@@ -63,7 +63,7 @@ public class ExpenseCategory {
 
     @Override
     public String toString() {
-        return "ExpenseCategory{" +
+        return "ExpenseCategoryService{" +
                 "id=" + id +
                 ", creationDateTime=" + creationDateTime +
                 ", categoryName='" + categoryName + '\'' +

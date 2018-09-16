@@ -11,5 +11,7 @@ public interface ExpenseCategoryService {
     boolean saveCategory(ExpenseCategory expenseCategory);
 
     Optional<ExpenseCategory> findCategoryById(Long id);
+
+    void deleteCategoryById(Long id);
 }
 

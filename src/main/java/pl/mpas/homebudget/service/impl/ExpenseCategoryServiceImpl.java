@@ -45,4 +45,9 @@ public class ExpenseCategoryServiceImpl implements ExpenseCategoryService {
     public Optional<ExpenseCategory> findCategoryById(Long id) {
         return dataRepository.findById(id);
     }
+
+    @Override
+    public void deleteCategoryById(Long id) {
+        dataRepository.deleteById(id);
+    }
 }

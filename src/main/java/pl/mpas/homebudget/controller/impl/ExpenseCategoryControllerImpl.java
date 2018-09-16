@@ -76,4 +76,24 @@ public class ExpenseCategoryControllerImpl implements ExpenseCategoryController 
 
         return "category/new-edit-category";
     }
+
+    @GetMapping("/category/delete-confirmation/{id}")
+    public String deleteConfirmation(@PathVariable Long id, Model model) {
+        logger.info("deleteConfirmation(), id: {}", id);
+
+        Optional<ExpenseCategory> categoryToAsk = categoryService.findCategoryById(id);
+        categoryToAsk.ifPresent(expenseCategory -> model.addAttribute("categoryToAsk", expenseCategory));
+
+        return "category/delete-confirmation";
+    }
+
+    @GetMapping("/category/delete/{id}")
+    public String deleteCategory(@PathVariable Long id) {
+        logger.info("deleteCategory(), id: {}", id);
+
+        categoryService.deleteCategoryById(id);
+
+        return "redirect:/category/all";
+    }
+
 }

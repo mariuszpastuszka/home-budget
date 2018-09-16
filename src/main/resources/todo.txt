@@ -8,6 +8,8 @@
 
     - wydatki (crud)
 x
+    - strona do obsługi błędów
+
     - testy
 
     - logowanie

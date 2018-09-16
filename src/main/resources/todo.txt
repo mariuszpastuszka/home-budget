@@ -7,7 +7,7 @@
     - dochody (crud)
 
     - wydatki (crud)
-
+x
     - testy
 
     - logowanie

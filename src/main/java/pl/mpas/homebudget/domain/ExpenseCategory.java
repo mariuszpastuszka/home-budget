@@ -1,9 +1,6 @@
 package pl.mpas.homebudget.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
@@ -14,7 +11,7 @@ public class ExpenseCategory {
     @GeneratedValue
     private Long id;
 
-    private LocalDateTime creationDateTime;
+    private LocalDateTime creationDateTime = LocalDateTime.now();
 
     private String categoryName;
 

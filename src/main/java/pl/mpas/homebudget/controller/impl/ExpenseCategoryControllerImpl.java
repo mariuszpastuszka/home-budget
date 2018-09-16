@@ -13,7 +13,6 @@ import pl.mpas.homebudget.controller.ExpenseCategoryController;
 import pl.mpas.homebudget.domain.ExpenseCategory;
 import pl.mpas.homebudget.service.ExpenseCategoryService;
 
-import java.util.Collections;
 import java.util.List;
 
 @Controller
@@ -40,6 +39,8 @@ public class ExpenseCategoryControllerImpl implements ExpenseCategoryController 
     }
 
     @PostMapping("/category/save")
+    // TODO:MP deal with empty and duplicated values
+    // add bean validation
     public String saveCategory(@ModelAttribute ExpenseCategory expenseCategory,
                                @RequestParam(name = "pressed-button") String pushedButton) {
 
@@ -57,11 +58,12 @@ public class ExpenseCategoryControllerImpl implements ExpenseCategoryController 
     @Override
     public String addCategory(Model category) {
         logger.info("addCategory()");
-        // TODO:MP save category
 
+        category.addAttribute("operationTitle", "New");
+        category.addAttribute("mainParagraph", "Add new");
         category.addAttribute("category", new ExpenseCategory());
 
-        return "category/new-category";
+        return "category/new-edit-category";
     }
 
 }

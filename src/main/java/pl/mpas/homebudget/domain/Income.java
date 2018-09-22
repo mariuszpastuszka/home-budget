@@ -3,19 +3,21 @@ package pl.mpas.homebudget.domain;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-//@Entity
+@Entity
 public class Income {
 
-//    @Id
-//    @GeneratedValue
+    @Id
+    @GeneratedValue
     private Long id;
 
     private String title;
 
+    @OneToOne
     private IncomeSource incomeSource;
 
     private BigDecimal incomeAmount;

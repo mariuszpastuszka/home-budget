@@ -6,12 +6,12 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.time.LocalDateTime;
 
-//@Entity
-//@Table(name = "Income_Source")
+@Entity
+@Table(name = "Income_Source")
 public class IncomeSource {
 
-//    @Id
-//    @GeneratedValue
+    @Id
+    @GeneratedValue
     private Long id;
 
     private String incomeName;

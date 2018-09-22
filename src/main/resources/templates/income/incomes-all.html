@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Incomes</title>
@@ -20,14 +20,14 @@
     </thead>
     <tbody>
     <tr th:each="income : ${incomes}">
-        <td th:text="income.title">From grand father</td>
+        <td th:text="income.">From grand father</td>
         <td th:text="${#temporals.format(income.creationDateTime, 'dd-MM-yyyy HH:mm')}">Today</td>
         <td><a th:href="@{'/income/edit/' + ${income.id}}">Edit</a></td>
         <td><a th:href="@{'/income/delete-confirmation/' + ${income.id}}">Delete</a></td>
     </tr>
     </tbody>
 </table>
-<p><a th:href="@{/category/add}">Add new category</a></p>
+<p><a th:href="@{/income/add}">Add new income</a></p>
 </body>
 
 

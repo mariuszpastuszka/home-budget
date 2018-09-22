@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Incomes</title>
+</head>
+<body>
+<p>Incomes</p>
+
+<table>
+    <thead>
+    <tr>
+        <th>Title</th>
+        <th>Income source</th>
+        <th>Income amount</th>
+        <th>Income date</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="income : ${incomes}">
+        <td th:text="income.title">From grand father</td>
+        <td th:text="${#temporals.format(income.creationDateTime, 'dd-MM-yyyy HH:mm')}">Today</td>
+        <td><a th:href="@{'/income/edit/' + ${income.id}}">Edit</a></td>
+        <td><a th:href="@{'/income/delete-confirmation/' + ${income.id}}">Delete</a></td>
+    </tr>
+    </tbody>
+</table>
+<p><a th:href="@{/category/add}">Add new category</a></p>
+</body>
+
+
+</body>
+</html>

@@ -29,6 +29,7 @@ public class ExpenseCategoryServiceImpl implements ExpenseCategoryService {
     @Override
     public List<ExpenseCategory> readAllExpenseCategories() {
 
+        // TODO:MP fix casting
         List<ExpenseCategory> result = (List<ExpenseCategory>) dataRepository.findAll();
 
         logger.info("Expense categories read from dao: {}", result);

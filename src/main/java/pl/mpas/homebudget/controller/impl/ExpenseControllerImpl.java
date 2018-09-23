@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import pl.mpas.homebudget.controller.ExpenseController;
+import pl.mpas.homebudget.domain.PaymentMethod;
+import pl.mpas.homebudget.service.ExpenseCategoryService;
 import pl.mpas.homebudget.service.ExpenseService;
 
 @Controller
@@ -15,10 +17,13 @@ public class ExpenseControllerImpl implements ExpenseController {
     private static final Logger logger = LoggerFactory.getLogger(ExpenseControllerImpl.class);
 
     private ExpenseService expenseService;
+    private ExpenseCategoryService categoryService;
 
     @Autowired
-    public ExpenseControllerImpl(ExpenseService expenseService) {
+    public ExpenseControllerImpl(ExpenseService expenseService,
+                                 ExpenseCategoryService categoryService) {
         this.expenseService = expenseService;
+        this.categoryService = categoryService;
     }
 
     @GetMapping("/expense/all")
@@ -28,5 +33,13 @@ public class ExpenseControllerImpl implements ExpenseController {
         logger.info("showAllExpenses()");
         model.addAttribute("expenses", expenseService.readAllExpenses());
         return "expense/expenses-all";
+    }
+
+    @GetMapping("/expense/add")
+    @Override
+    public String addExpense(Model model) {
+
+        model.addAttribute("paymentMethods", PaymentMethod.values());
+        return "expense/new-edit";
     }
 }

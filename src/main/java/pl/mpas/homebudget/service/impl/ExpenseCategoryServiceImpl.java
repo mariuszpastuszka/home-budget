@@ -9,10 +9,7 @@ import pl.mpas.homebudget.domain.ExpenseCategory;
 import pl.mpas.homebudget.service.ExpenseCategoryService;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class ExpenseCategoryServiceImpl implements ExpenseCategoryService {
@@ -30,8 +27,9 @@ public class ExpenseCategoryServiceImpl implements ExpenseCategoryService {
     public List<ExpenseCategory> readAllExpenseCategories() {
 
         List<ExpenseCategory> result = (List<ExpenseCategory>) dataRepository.findAll();
+        Collections.sort(result, Comparator.comparing(ExpenseCategory::getCategoryName));
+        logger.info("Sorted expense categories read from dao: {}", result);
 
-        logger.info("Expense categories read from dao: {}", result);
         return result;
     }
 

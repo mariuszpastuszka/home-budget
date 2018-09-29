@@ -8,6 +8,8 @@
 
     - wydatki (crud)
 x
+    - bulk import - kategorie i wydatki
+
     - strona do obsługi błędów
 
     - testy

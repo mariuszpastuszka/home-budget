@@ -10,6 +10,7 @@ import pl.mpas.homebudget.service.ExpenseService;
 
 import java.math.BigDecimal;
 import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -29,6 +30,23 @@ public class ChartsServiceImpl implements ChartsService {
     public Map<String, BigDecimal> readCategoriesOverAmounts() {
         List<Expense> allExpenses = expenseService.readAllExpenses();
 
+        Map<String, BigDecimal> result = new LinkedHashMap<>();
+
+        for (Expense expense : allExpenses) {
+            String expenseCategory = expense.getCategory().getCategoryName();
+            BigDecimal expenseValue = expense.getExpenseAmount();
+
+            if (result.containsKey(expenseCategory)) {
+                BigDecimal newCategoryValue = expenseValue.add(result.get(expenseCategory));
+                result.put(expenseCategory, newCategoryValue);
+            } else {
+                result.put(expenseCategory, expenseValue);
+            }
+        }
+
+        //
+//        allExpenses.stream()
+//                .map(expense ->  expense.getCategory().getCategoryName())
 
 
         return Collections.emptyMap();
